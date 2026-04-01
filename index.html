@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aluminite</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+  <!-- Hamburger -->
+  <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+
+  <div class="brand">Aluminite</div>
+
+  <div class="nav-actions">
+    <button id="btnLogin" class="btn">Login</button>
+    <button id="btnRegister" class="btn">Register</button>
+    <button id="btnLogout" class="btn hidden">Logout</button>
+  </div>
+</header>
+
+<!-- Drawer overlay (clicking it closes the drawer) -->
+<div id="drawerOverlay" class="drawer-overlay hidden"></div>
+
+  <!-- LANDING -->
+  <main id="landing" class="landing-hero page">
+  <div class="hero-wrap">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Build lifelong connections with your university community</h1>
+        <p class="hero-sub">
+          Connect students, alumni and faculty — find opportunities, mentor and be mentored, and grow together.
+        </p>
+
+        <div class="hero-ctas">
+          <!-- use existing header buttons (keeps behavior) -->
+          <button class="btn primary" id="heroRegister" onclick="document.getElementById('btnRegister').click()">Get Started — Register</button>
+          <button class="btn ghost" id="heroLogin" onclick="document.getElementById('btnLogin').click()">Login</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">1,200+</div>
+            <div class="stat-label">Alumni</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4,500+</div>
+            <div class="stat-label">Student Connections</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">600+</div>
+            <div class="stat-label">Opportunities Posted</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="University network" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon">👥</div>
+        <h3>Directory</h3>
+        <p>Find students, alumni and faculty by name, role or current position.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📣</div>
+        <h3>Opportunities</h3>
+        <p>Post and discover internships, jobs, projects and research calls.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🧭</div>
+        <h3>Profile Dashboard</h3>
+        <p>Manage your profile, add current status and contact details.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🌱</div>
+        <h3>Community</h3>
+        <p>Mentorship and knowledge sharing across the university network.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials / Partners (optional) -->
+  <section class="partners">
+    <div class="partners-inner">
+      <div class="partner">Trusted by universities & alumni networks</div>
+      <div class="partner-logos">
+        <img src="https://via.placeholder.com/100x32?text=Logo+1" alt="partner 1" />
+        <img src="https://via.placeholder.com/100x32?text=Logo+2" alt="partner 2" />
+        <img src="https://via.placeholder.com/100x32?text=Logo+3" alt="partner 3" />
+      </div>
+    </div>
+  </section>
+</main>
+  <!-- LOGIN (modal) -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-card">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Password</label>
+        <input type="password" name="password" required />
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Login</button>
+          <button type="button" id="loginCancel" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- REGISTER (modal) -->
+  <div id="registerModal" class="modal hidden">
+    <div class="modal-card">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <label>Name</label><input name="name" required />
+        <label>Email</label><input name="email" type="email" required />
+        <label>Password</label><input name="password" type="password" required />
+        <label>Role</label>
+        <select name="role" required>
+          <option value="student">Student</option>
+          <option value="alumni">Alumni</option>
+          <option value="faculty">Faculty</option>
+        </select>
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Register</button>
+          <button type="button" id="registerCancel" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD (hidden until login) -->
+  <div id="dashboard" class="page hidden">
+    <aside class="sidebar">
+      <button id="navProfile" class="btn">My Profile</button>
+      <button id="navDirectory" class="btn">Directory</button>
+      <button id="navPostOpp" class="btn">Post Opportunity</button>
+      <button id="navOppList" class="btn">View Opportunities</button>
+    </aside>
+
+    <section class="content">
+      <!-- PROFILE -->
+      <!-- PROFILE -->
+<div id="profileView" class="view hidden">
+  <h2>My Profile</h2>
+
+  <div class="card">
+    <form id="profileForm">
+      <!-- Add a div.field wrapper around each label/input -->
+      <div class="field">
+        <label>Name</label>
+        <input name="name" />
+      </div>
+
+      <div class="field">
+        <label>Phone</label>
+        <input name="phone" />
+      </div>
+
+      <div class="field">
+        <label>Status</label>
+        <input name="status" />
+      </div>
+
+      <button type="submit" class="btn primary">Save</button>
+    </form>
+  </div>
+</div>
+      <!-- DIRECTORY -->
+      <div id="directoryView" class="view hidden">
+        <h2>Directory</h2>
+        <input id="dirSearch" placeholder="Search by name or email" />
+        <div id="directoryList"></div>
+      </div>
+
+      <!-- POST OPPORTUNITY -->
+      <!-- POST OPPORTUNITY (replace existing postOppView block) -->
+<div id="postOppView" class="view hidden">
+  <h2>Post Opportunity</h2>
+
+  <div class="form-card">
+    <form id="postOppForm">
+      <div class="form-row">
+        <div class="field">
+          <label for="opp-title">Title</label>
+          <input id="opp-title" name="title" type="text" placeholder="e.g. Summer Internship at XYZ" required />
+        </div>
+
+        <div class="field">
+          <label for="opp-type">Type</label>
+          <select id="opp-type" name="type" required>
+            <option value="" disabled selected>Select type</option>
+            <option value="internship">Internship</option>
+            <option value="job">Job</option>
+            <option value="project">Project</option>
+            <option value="research">Research</option>
+            <option value="event">Event</option>
+            <option value="startup">Startup</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="opp-desc">Description</label>
+        <textarea id="opp-desc" name="description" placeholder="Describe the opportunity, requirements, contact info..." required></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="opp-deadline">Deadline (optional)</label>
+          <input id="opp-deadline" name="deadline" type="date" />
+        </div>
+
+        <div class="field align-end">
+          <div class="modal-actions" style="justify-content:flex-end;">
+            <button type="submit" class="btn primary">Post Opportunity</button>
+            <button type="button" class="btn" onclick="show('oppListView'); loadOpportunities();">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+      <!-- OPPORTUNITIES LIST -->
+      <div id="oppListView" class="view hidden">
+        <h2>Opportunities</h2>
+        <div id="opportunityList"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
